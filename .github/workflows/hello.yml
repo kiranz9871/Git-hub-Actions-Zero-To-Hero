@@ -2,16 +2,15 @@ name: Hello CI
 
 on: [push]
 
+env:
+  APP_NAME: my-first-ci
+  ENVIRONMENT: dev
+
 jobs:
   hello:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout code
-        uses: actions/checkout@v4
-
-      - name: list repository files
-        run: ls -la
-
-      - name: print working directory
-        run: pwd
-      
+      - name: Print env variables
+        run: |
+          echo "App = $APP_NAME"
+          echo "Env = $ENVIRONMENT"
